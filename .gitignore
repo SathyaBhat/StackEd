@@ -26,4 +26,6 @@ Thumbs.db
 obj/
 [Rr]elease*/
 _ReSharper*/
+[pP]ublish*/
 [Tt]est[Rr]esult*
+*.pfx

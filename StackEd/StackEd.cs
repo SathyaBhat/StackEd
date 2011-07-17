@@ -97,6 +97,8 @@ namespace StackEd
 
         private void auto_fix()
         {
+            string words_list;
+      //      string words_list_regex;
             List<string> words = new List<string>(new string[] 
             {
           "AMD", "AppleScript", "ASUS", "ATI", "Bluetooth", "DivX", "DVD", "Eee PC", "FireWire",
@@ -108,7 +110,9 @@ namespace StackEd
             }
 
     );
-              
+            words_list = string.Join("|", words.ToArray());
+            // words_list_regex = "\b(?:(" + words_list + "))\b";
+            Regex words_list_regex = new Regex("\b(?:(" + words_list + "))\b");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bur\b", "your");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bi( |')","I$1");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bi ?m\b","I'm");
@@ -123,10 +127,19 @@ namespace StackEd
             txtContent.Text = Regex.Replace(txtContent.Text, @"\b(a)n(?= +(?![aeiou]|HTML|user))", "$1", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\b(a)(?= +[aeiou](?!ser))", "$1n", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\b(a)lot", "$1 lot", RegexOptions.IgnoreCase);
-            txtContent.Text = Regex.Replace(txtContent.Text, @"^(thx?|thanks?|cheers|thanx|tia)\s?((in advance)|you)?[\.\!\,]*", "", RegexOptions.IgnoreCase | RegexOptions.Multiline);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"^(thx|thanks?|cheers|thanx|tia)\s?((in advance)|you)?[\.\!\,]*", "", RegexOptions.IgnoreCase | RegexOptions.Multiline);
             txtContent.Text = Regex.Replace(txtContent.Text, @"[ ]*\.( ?\.)+ *", ". ", RegexOptions.IgnoreCase | RegexOptions.Multiline);
             txtContent.Text = Regex.Replace(txtContent.Text, @"[ ]*([\?\!] ?)+ *", "$1 ", RegexOptions.IgnoreCase | RegexOptions.Multiline);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"e\.? *G\.?\,? +(.)","_",RegexOptions.IgnoreCase);
+       //  txtContent.Text = Regex.Replace(txtContent.Text, words_list_regex, "$1".ToUpper(), RegexOptions.IgnoreCase);
 
+           /*
+            if (Regex.IsMatch(txtContent.Text,  words_list_regex))
+            {
+                MessageBox.Show("hello");
+
+            }
+            */
         }
 
         private void btnAutoCorrect_Click(object sender, EventArgs e)
@@ -136,13 +149,24 @@ namespace StackEd
 
         private void txtContent_KeyUp(object sender, KeyEventArgs e)
         {
-            if ( e.Control ) {
-            switch (e.KeyCode)
+            if ( e.Control ) 
             {
-                case ( Keys.A ):
-                    txtContent.SelectAll();
-                    break;
-            }
+                switch (e.KeyCode)
+                {
+                    case ( Keys.A ):
+                        txtContent.SelectAll();
+                        break;
+                    
+                    case ( Keys.C):
+                        txtContent.Copy();
+                        break;
+
+                   
+
+                }
+
+                
+
             }
         }
     }
