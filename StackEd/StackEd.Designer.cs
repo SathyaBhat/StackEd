@@ -39,11 +39,11 @@
             // 
             // btnCorrect
             // 
-            this.btnCorrect.Location = new System.Drawing.Point(15, 12);
+            this.btnCorrect.Location = new System.Drawing.Point(122, 11);
             this.btnCorrect.Name = "btnCorrect";
             this.btnCorrect.Size = new System.Drawing.Size(90, 26);
-            this.btnCorrect.TabIndex = 3;
-            this.btnCorrect.Text = "&Change Case";
+            this.btnCorrect.TabIndex = 5;
+            this.btnCorrect.Text = "Change C&ase";
             this.btnCorrect.UseVisualStyleBackColor = true;
             this.btnCorrect.Click += new System.EventHandler(this.btnCorrect_Click);
             // 
@@ -78,6 +78,7 @@
             this.stsLogs.Size = new System.Drawing.Size(602, 22);
             this.stsLogs.TabIndex = 4;
             this.stsLogs.Text = "statusStrip1";
+            this.stsLogs.Visible = false;
             // 
             // stsLogLabel
             // 
@@ -86,11 +87,11 @@
             // 
             // btnAutoCorrect
             // 
-            this.btnAutoCorrect.Location = new System.Drawing.Point(118, 12);
+            this.btnAutoCorrect.Location = new System.Drawing.Point(29, 12);
             this.btnAutoCorrect.Name = "btnAutoCorrect";
             this.btnAutoCorrect.Size = new System.Drawing.Size(77, 25);
-            this.btnAutoCorrect.TabIndex = 5;
-            this.btnAutoCorrect.Text = "Correct";
+            this.btnAutoCorrect.TabIndex = 3;
+            this.btnAutoCorrect.Text = "&Correct";
             this.btnAutoCorrect.UseVisualStyleBackColor = true;
             this.btnAutoCorrect.Click += new System.EventHandler(this.btnAutoCorrect_Click);
             // 

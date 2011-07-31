@@ -39,7 +39,6 @@ namespace StackEd
                 content = txtContent.SelectedText;
             }
 
-            stsLogLabel.Text = stsLogLabel.Text + ' ' + content;
             switch (case_correction)
             {
                 case "lower":
@@ -56,9 +55,7 @@ namespace StackEd
                     break;
                 
             }
-            stsLogLabel.Text = stsLogLabel.Text + ' ' + content;
-            stsLogLabel.Text = stsLogLabel.Text + ' ' + case_correction;
-
+            
             if (txtContent.SelectedText.Equals(""))
             {
                 txtContent.Text = content;
@@ -98,7 +95,8 @@ namespace StackEd
         private void auto_fix()
         {
             string words_list;
-      //      string words_list_regex;
+           
+           string words_list_regex;
             List<string> words = new List<string>(new string[] 
             {
           "AMD", "AppleScript", "ASUS", "ATI", "Bluetooth", "DivX", "DVD", "Eee PC", "FireWire",
@@ -110,15 +108,17 @@ namespace StackEd
             }
 
     );
-            words_list = string.Join("|", words.ToArray());
-            // words_list_regex = "\b(?:(" + words_list + "))\b";
-            Regex words_list_regex = new Regex("\b(?:(" + words_list + "))\b");
+           words_list = string.Join("|", words.ToArray());
+         
+           words_list_regex = @"\b" + words_list + "\b";
+           
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bur\b", "your");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bi( |')","I$1");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bi ?m\b","I'm");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bu\b","you");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bur\b", "your");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bcud\b", "could");
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bc(o|u)z\b", "because", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bb4\b", "before", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bpl[sz]\b", "please", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin7\b", "Windows 7");
@@ -129,22 +129,25 @@ namespace StackEd
             txtContent.Text = Regex.Replace(txtContent.Text, @"\b(a)lot", "$1 lot", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"^(thx|thanks?|cheers|thanx|tia)\s?((in advance)|you)?[\.\!\,]*", "", RegexOptions.IgnoreCase | RegexOptions.Multiline);
             txtContent.Text = Regex.Replace(txtContent.Text, @"[ ]*\.( ?\.)+ *", ". ", RegexOptions.IgnoreCase | RegexOptions.Multiline);
-            txtContent.Text = Regex.Replace(txtContent.Text, @"[ ]*([\?\!] ?)+ *", "$1 ", RegexOptions.IgnoreCase | RegexOptions.Multiline);
-            txtContent.Text = Regex.Replace(txtContent.Text, @"e\.? *G\.?\,? +(.)","_",RegexOptions.IgnoreCase);
-       //  txtContent.Text = Regex.Replace(txtContent.Text, words_list_regex, "$1".ToUpper(), RegexOptions.IgnoreCase);
-
-           /*
-            if (Regex.IsMatch(txtContent.Text,  words_list_regex))
+            txtContent.Text = Regex.Replace(txtContent.Text, @"([.?\s!]\s\w)|^(\b\w)", delegate(Match matched_txt)
             {
-                MessageBox.Show("hello");
+                string v = matched_txt.ToString();
+                return v.ToUpper();
 
             }
-            */
+            , RegexOptions.Multiline);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"[ ]*([\?\!] ?)+ *", "$1 ", RegexOptions.IgnoreCase | RegexOptions.Multiline);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"e\.? *G\.?\,? +(.)","_",RegexOptions.IgnoreCase);
+    
+
         }
 
         private void btnAutoCorrect_Click(object sender, EventArgs e)
         {
             auto_fix();
+            txtContent.Focus();
+            txtContent.SelectAll();
+            txtContent.Copy();
         }
 
         private void txtContent_KeyUp(object sender, KeyEventArgs e)
