@@ -121,8 +121,13 @@ namespace StackEd
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bc(o|u)z\b", "because", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bb4\b", "before", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bpl[sz]\b", "please", RegexOptions.IgnoreCase);
-            txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin7\b", "Windows 7");
-            txtContent.Text = Regex.Replace(txtContent.Text, @"\bwinxp\b", "Windows XP");
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\binternet\b", "Internet", RegexOptions.IgnoreCase);
+            
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin?7\b", "Windows 7", RegexOptions.IgnoreCase);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bandroid\b", "Android");
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\beclipse\b", "Eclipse");
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin xp\b", "Windows XP", RegexOptions.IgnoreCase);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin*\b", "Windows", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\b(can|doesn|won|hasn|isn|didn)t\b", "$1't", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\b(a)n(?= +(?![aeiou]|HTML|user))", "$1", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\b(a)(?= +[aeiou](?!ser))", "$1n", RegexOptions.IgnoreCase);
