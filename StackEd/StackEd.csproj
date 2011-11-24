@@ -59,7 +59,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>A8F39E808A89DB60975A462154F51CA6EBF0C761</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>92B1CF030551B825343386EDEFC1922411A3A78C</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>StackEd_TemporaryKey.pfx</ManifestKeyFile>

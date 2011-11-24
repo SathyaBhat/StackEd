@@ -94,6 +94,8 @@ namespace StackEd
 
         private void auto_fix()
         {
+
+            /*
             string words_list;
            
            string words_list_regex;
@@ -111,7 +113,7 @@ namespace StackEd
            words_list = string.Join("|", words.ToArray());
          
            words_list_regex = @"\b" + words_list + "\b";
-           
+           */
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bur\b", "your");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bi( |')","I$1");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bi ?m\b","I'm");
@@ -122,13 +124,16 @@ namespace StackEd
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bb4\b", "before", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bpl[sz]\b", "please", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\binternet\b", "Internet", RegexOptions.IgnoreCase);
-            
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bub[a|u]ntu\b", "Ubuntu", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin?7\b", "Windows 7", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bandroid\b", "Android");
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bgoogle\b", "Google");
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bgmail\b", "Gmail", RegexOptions.IgnoreCase);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bpaypal\b", "PayPal", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\beclipse\b", "Eclipse");
-            txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin xp\b", "Windows XP", RegexOptions.IgnoreCase);
-            txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin*\b", "Windows", RegexOptions.IgnoreCase);
-            txtContent.Text = Regex.Replace(txtContent.Text, @"\b(can|doesn|won|hasn|isn|didn)t\b", "$1't", RegexOptions.IgnoreCase);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin ?xp\b", "Windows XP", RegexOptions.IgnoreCase);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin\w*\b", "Windows", RegexOptions.IgnoreCase);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\b(can|doesn|don|won|hasn|isn|didn)t\b", "$1't", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\b(a)n(?= +(?![aeiou]|HTML|user))", "$1", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\b(a)(?= +[aeiou](?!ser))", "$1n", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\b(a)lot", "$1 lot", RegexOptions.IgnoreCase);
