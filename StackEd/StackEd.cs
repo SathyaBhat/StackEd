@@ -116,7 +116,7 @@ namespace StackEd
            */
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bur\b", "your");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bi( |')","I$1");
-            txtContent.Text = Regex.Replace(txtContent.Text, @"\bi ?m\b","I'm");
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bi ?m\b","I'm",RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bu\b","you");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bur\b", "your");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bcud\b", "could");
@@ -128,9 +128,13 @@ namespace StackEd
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin?7\b", "Windows 7", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bandroid\b", "Android");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bgoogle\b", "Google");
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\boracle\b", "Oracle", RegexOptions.IgnoreCase);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bpl[ |/|-]?sql\b", "PL/SQL", RegexOptions.IgnoreCase);
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bt[ |/|-]?sql\b", "T-SQL", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bgmail\b", "Gmail", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bpaypal\b", "PayPal", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\beclipse\b", "Eclipse");
+            txtContent.Text = Regex.Replace(txtContent.Text, @"\bstackoverflow\b", "Stack Overflow");
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin ?xp\b", "Windows XP", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\bwin\w*\b", "Windows", RegexOptions.IgnoreCase);
             txtContent.Text = Regex.Replace(txtContent.Text, @"\b(can|doesn|don|won|hasn|isn|didn)t\b", "$1't", RegexOptions.IgnoreCase);
